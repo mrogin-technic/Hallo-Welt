@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-
+{% load widget_tweaks %}
 {% block content %}
 
 {% if form.errors %}
@@ -8,17 +8,21 @@
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
+<br>
 <table>
 <tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
+    <td>{{ form.username.label_tag }} &ensp;</td>
+    <td>{{ form.username|attr:"autofocus" }}</td>
 </tr>
 <tr>
-    <td>{{ form.password.label_tag }}</td>
+    <td>&ensp;</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }} &ensp;</td>
     <td>{{ form.password }}</td>
 </tr>
 </table>
-
+<br>
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
